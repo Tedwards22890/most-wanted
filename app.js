@@ -118,6 +118,8 @@ function searchByName(people) {
 }
 // End of searchByName()
 
+
+
 /**
  * This function will be useful for STRINGIFYING a collection of person-objects
  * first and last name properties in order to easily send the information
@@ -152,11 +154,28 @@ function displayPerson(person) {
     personInfo += `Parents: ${person.parents}\n`;
     personInfo += `CurrentSpouse ${person.currentSpouse}\n`;
     // #1a: finish getting the rest of the information to display //////////////////////////////////////////
-    alert(personInfo);
     return personInfo;
 }
 // End of displayPerson()
 
+
+function findPersonFamily(person, people)
+{
+    let familySpouse = 
+    let familyid = person.currentSpouse;
+
+    if (people.id = familyid)
+    {
+        let spouseName = `First Name ${people.firstName}\n`;
+        spouseName += `Last name ${people.lastName}\n`; 
+    }
+    let spouseName = function findSpouse(familyid, people).map
+    (
+
+
+    )
+    return familyInfo;
+}
 /**
  * This function's purpose is twofold:
  * First, to generate a prompt with the value passed in to the question parameter.
