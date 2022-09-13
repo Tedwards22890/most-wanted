@@ -79,7 +79,7 @@ function mainMenu(person, people) {
             alert(personFamily);
             break;
         case "descendants":
-            //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
+            // TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
             // HINT: Review recursion lecture + demo for bonus user story
             //Must be children and grandchildren
             let personDescendants = findPersonDescendants(person[0], people);
@@ -204,6 +204,10 @@ function findPersonDescendants(person, people)
             if (person.id == el.parents[0] || person.id == el.parents[1])
             {
                 descends += `Child: ${el.firstName} ${el.lastName}`
+            }
+            if (person.id == el.parents[0] || person.id == el.parents[1] && el.parents == el.id)
+            {
+                descends += `Grandchild: ${el.firstName} ${el.lastName}`;
             }
 
             return descends;
