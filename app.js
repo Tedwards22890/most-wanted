@@ -152,8 +152,6 @@ function displayPerson(person) {
     personInfo += `Weight: ${person.weight}\n`;
     personInfo += `Eye Color: ${person.eyeColor}\n`;
     personInfo += `Occupation: ${person.occupation}\n`;
-    personInfo += `Parents: ${person.parents}\n`;
-    personInfo += `CurrentSpouse ${person.currentSpouse}\n`;
     // #1a: finish getting the rest of the information to display //////////////////////////////////////////
     return personInfo;
 }
@@ -202,13 +200,16 @@ function findPersonDescendants(person, people)
     (
         function(el)
         {
-            let descdends="";
+            let descends="";
             if (person.id == el.parents[0] || person.id == el.parents[1])
             {
-                descdends += 
+                descends += `Child: ${el.firstName} ${el.lastName}`
             }
+
+            return descends;
         }
     )
+    return descendants;
 }
 /**
  * This function's purpose is twofold:
