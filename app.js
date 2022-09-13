@@ -161,23 +161,44 @@ function displayPerson(person) {
 
 function findPersonFamily(person, people)
 {
-    let spouseName = people.map(
+    let wholeFamily = people.map(
         function(el)
         {
-            let spousesName="";
+            let spouseName="";
+            let parents="";
             if (person.currentSpouse == el.id)
             {
 
-                spousesName = `Spouse:\nFirst Name ${el.firstName}\n`;
-                spousesName += `Last name ${el.lastName}\n`; 
+                spouseName = `Spouse:\nFirst Name ${el.firstName}\n`;
+                spouseName += `Last name ${el.lastName}\n`; 
             }
-            return spousesName;
+            
+
+            let parental = person.map(
+                function(le)
+                {
+                    if (person.parents == el.id)
+                    {
+                        {
+                            parents = `Parent:\nFirst Name: ${le.firstName}\n`;
+                            parents += `Last Name: ${le.lastName}\n`;
+                        }
+                    }
+                }
+            )
+            /*if (person.parents == el.id)
+            {
+                parents = `Parent:\nFirst Name: ${el.firstName}\n`;
+                parents += `Last Name: ${el.lastName}\n`;
+            }*/
+            let familyNames= `${spouseName}\n${parents}`;
+            return familyNames;
         }
 
     );
 
 
-    return spouseName;
+    return wholeFamily;
 }
 /**
  * This function's purpose is twofold:
