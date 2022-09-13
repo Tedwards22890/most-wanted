@@ -64,13 +64,13 @@ function mainMenu(person, people) {
     // Routes our application based on the user's input
     switch (displayOption) {
         case "info":
-            //! TODO #1: Utilize the displayPerson function //////////////////////////////////////////
+            // TODO #1: Utilize the displayPerson function //////////////////////////////////////////
             // HINT: Look for a person-object stringifier utility function to help
             let personInfo = displayPerson(person[0]);
             alert(personInfo);
             break;
         case "family":
-            //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
+            // TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
             // HINT: Look for a people-collection stringifier utility function to help
             let personFamily = findPersonFamily(person[0], people)
             {
@@ -81,6 +81,7 @@ function mainMenu(person, people) {
         case "descendants":
             //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
             // HINT: Review recursion lecture + demo for bonus user story
+            //Must be children and grandchildren
             let personDescendants = findPersonDescendants(person[0], people);
             alert(personDescendants);
             break;
@@ -166,32 +167,25 @@ function findPersonFamily(person, people)
         {
             let spouseName="";
             let parents="";
+            let siblings="";
             if (person.currentSpouse == el.id)
             {
-
                 spouseName = `Spouse:\nFirst Name ${el.firstName}\n`;
                 spouseName += `Last name ${el.lastName}\n`; 
             }
-            
 
-            let parental = person.map(
-                function(le)
-                {
-                    if (person.parents == el.id)
-                    {
-                        {
-                            parents = `Parent:\nFirst Name: ${le.firstName}\n`;
-                            parents += `Last Name: ${le.lastName}\n`;
-                        }
-                    }
-                }
-            )
-            /*if (person.parents == el.id)
+            if (person.parents[0] == el.id || person.parents[1] == el.id)
             {
-                parents = `Parent:\nFirst Name: ${el.firstName}\n`;
+                parents += `Parent:\nFirst Name: ${el.firstName}\n`;
                 parents += `Last Name: ${el.lastName}\n`;
-            }*/
-            let familyNames= `${spouseName}\n${parents}`;
+            }
+            if (person.parents[0]==el.parents[0])
+            {
+                siblings += `Sibling:\nFirst name: ${el.firstName}\n`;
+                siblings += `Last Name: ${el.lastName}`
+            }
+            //compare parent ID 1 for siblings
+            let familyNames = `${parents}${spouseName}${siblings}`; //\n
             return familyNames;
         }
 
@@ -199,6 +193,22 @@ function findPersonFamily(person, people)
 
 
     return wholeFamily;
+}
+
+
+function findPersonDescendants(person, people)
+{
+    let descendants = people.map
+    (
+        function(el)
+        {
+            let descdends="";
+            if (person.id == el.parents[0] || person.id == el.parents[1])
+            {
+                descdends += 
+            }
+        }
+    )
 }
 /**
  * This function's purpose is twofold:
