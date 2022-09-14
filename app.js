@@ -190,7 +190,45 @@ function searchByTraits(people)
     }
     else if (traitChoice=="many")
     {
+
+        let yesOrNo = prompt("Would you like to search by gender(y/n): ");
+        if (yesOrNo == "y")
+        {
+            let genderType = prompt("enter 'male' or 'female: ");
+            genderTrait = people.filter (function (el)
+            {        
+                if (el.gender==genderType)
+            {
+                return true;
+            }
+            });
+        }
+        yesOrNo = prompt("Would you like to search by height(y/n): ")
+        if (yesOrNo == "y")
+        {
+            let heightType = prompt("enter height in inches: ");
+            heightTrait = people.filter (function (el)
+            {        
+                if (el.gender==genderType)
+            {
+                return true;
+            }
+            });
+        }
+        yesOrNo=prompt("Would you like to search by weight(y/n): ")
+        if (yesOrNo == "y")
+        {
+            let weightType = prompt("enter weight in pounds: ");
+            weightTrait = people.filter (function (el)
+            {        
+                if (el.gender==genderType)
+            {
+                return true;
+            }
+            });
+        }
         
+
     }
     return filteredTrait;
 }
