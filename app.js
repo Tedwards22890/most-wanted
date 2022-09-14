@@ -121,62 +121,78 @@ function searchByName(people) {
 
 function searchByTraits(people)
 {
-    let traitChoice = promptFor("Are you looking for a 'trait' or multiple 'traits'?", chars);
-    if (traitChoice=="trait")
+    let filteredTrait="";
+    let traitChoice = promptFor("Are you looking for 'one' trait or 'many''?", chars);
+    if (traitChoice=="one")
     {
         let trait = promptFor("Please select one of the following traits: 'gender', 'height', 'weight', 'eye' color, 'occupation':", chars)
-        let filteredTrait = people.filter (function (el)
-        {        
-            switch (trait) 
-            {
-                case "gender":
-                    let genderType = prompt("enter 'male' or 'female: ");
+        switch (trait) 
+        {
+            case "gender":
+                let genderType = prompt("enter 'male' or 'female: ");
+                filteredTrait = people.filter (function (el)
+                {        
                     if (el.gender==genderType)
-                    {
-                        return true;
-                    }
-                    break;
+                {
+                    return true;
+                }
+                });
+                break;
 
-                case "height":
-                    let heightType = promptFor("Enter a height in inches: ", chars);
+            case "height":
+                let heightType = promptFor("Enter a height in inches: ", chars);
+                filteredTrait = people.filter (function (el)
+                {
                     if (el.height == heightType)
                     {
                         return true;
                         
                     }
-                    break;
-            
-                case "weight":
-                    let weightType = promptFor("Enter weight in pounds: ", chars);
+                });
+                break;
+        
+            case "weight":
+                let weightType = promptFor("Enter weight in pounds: ", chars);
+                filteredTrait = people.filter (function (el)
+                {
                     if (el.weight == weightType)
                     {
                         return true;
                         
                     }
-                    break;
-            
-                case "eye":
-                    let eyeType = promptFor("Please enter an eye color: ", chars);
+                });
+                break;
+        
+            case "eye":
+                let eyeType = promptFor("Please enter an eye color: ", chars);
+                filteredTrait = people.filter (function (el)
+                {
                     if (el.eyeColor == eyeType)
                     {
                         return true;
                         
                     }
-                    break;
-            
-                case "occupation":
-                    let occupationType = promptFor("Please enter occupation: ", chars);
+                });
+                break;
+        
+            case "occupation":
+                let occupationType = promptFor("Please enter occupation: ", chars);
+                filteredTrait = people.filter (function (el)
+                {
                     if (el.occupation == occupationType)
                     {
                         return true;
                         
                     }
-                    break;
+                });
+                break;
             }
-        });
-        alert(filteredTrait); 
     }
-
+    else if (traitChoice=="many")
+    {
+        
+    }
+    return filteredTrait;
 }
 
 
