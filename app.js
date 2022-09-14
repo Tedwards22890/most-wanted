@@ -119,6 +119,58 @@ function searchByName(people) {
 }
 // End of searchByName()
 
+function searchByTraits(people)
+{
+    let traitChoice = promptFor("Are you looking for a 'trait' one 'trait'?", chars);
+    if (traitChoice=="trait")
+    {
+        let filteredTrait = people.filter (function (el)
+        {        
+            let trait = promptFor("Please select one of the following traits: 'gender', 'height', 'weight', 'eye' color, 'occupation'")
+            switch (trait) 
+            {
+                case "gender":
+                    let genderType = promptFor("enter 'male' or 'female",chars);
+                    if (el.gender==genderType.toLowerCase())
+                    {
+                        return true;
+                    }
+
+                case "height":
+                    let heightType = promptFor("Enter a height in inches: ");
+                    if (el.height == heightType)
+                    {
+                        return true;
+                    }
+            
+                case "weight":
+                    let weightType = promptFor("Enter weight in pounds: ");
+                    if (el.weight == weightType)
+                    {
+                        return true;
+                    }
+            
+                case "eye":
+                    let eyeType = promptFor("Please enter an eye color: ", chars);
+                    if (el.eyeColor == eyeType.toLowerCase())
+                    {
+                        return true;
+                    }
+            
+                case "occupation":
+                    let occupationType = promptFor("Please enter occupation: ", chars);
+                    if (el.occupation == occupationType.toLowerCase())
+                    {
+                        return true;
+                    }
+            }
+            alert(filteredTrait);    
+        });
+    }
+
+}
+
+
 
 
 /**
