@@ -121,51 +121,60 @@ function searchByName(people) {
 
 function searchByTraits(people)
 {
-    let traitChoice = promptFor("Are you looking for a 'trait' one 'trait'?", chars);
+    let traitChoice = promptFor("Are you looking for a 'trait' or multiple 'traits'?", chars);
     if (traitChoice=="trait")
     {
+        let trait = promptFor("Please select one of the following traits: 'gender', 'height', 'weight', 'eye' color, 'occupation':", chars)
         let filteredTrait = people.filter (function (el)
         {        
-            let trait = promptFor("Please select one of the following traits: 'gender', 'height', 'weight', 'eye' color, 'occupation'")
             switch (trait) 
             {
                 case "gender":
-                    let genderType = promptFor("enter 'male' or 'female",chars);
-                    if (el.gender==genderType.toLowerCase())
+                    let genderType = prompt("enter 'male' or 'female: ");
+                    if (el.gender==genderType)
                     {
                         return true;
                     }
+                    break;
 
                 case "height":
-                    let heightType = promptFor("Enter a height in inches: ");
+                    let heightType = promptFor("Enter a height in inches: ", chars);
                     if (el.height == heightType)
                     {
                         return true;
+                        
                     }
+                    break;
             
                 case "weight":
-                    let weightType = promptFor("Enter weight in pounds: ");
+                    let weightType = promptFor("Enter weight in pounds: ", chars);
                     if (el.weight == weightType)
                     {
                         return true;
+                        
                     }
+                    break;
             
                 case "eye":
                     let eyeType = promptFor("Please enter an eye color: ", chars);
-                    if (el.eyeColor == eyeType.toLowerCase())
+                    if (el.eyeColor == eyeType)
                     {
                         return true;
+                        
                     }
+                    break;
             
                 case "occupation":
                     let occupationType = promptFor("Please enter occupation: ", chars);
-                    if (el.occupation == occupationType.toLowerCase())
+                    if (el.occupation == occupationType)
                     {
                         return true;
+                        
                     }
+                    break;
             }
-            alert(filteredTrait);    
         });
+        alert(filteredTrait); 
     }
 
 }
