@@ -198,35 +198,64 @@ function searchByTraits(people)
             genderTrait = people.filter (function (el)
             {        
                 if (el.gender==genderType)
-            {
-                return true;
-            }
+                {
+                    return true;
+                }
             });
         }
-        yesOrNo = prompt("Would you like to search by height(y/n): ")
+        yesOrNo = prompt("Would you like to search by height(y/n): ");
         if (yesOrNo == "y")
         {
             let heightType = prompt("enter height in inches: ");
             heightTrait = people.filter (function (el)
             {        
-                if (el.gender==genderType)
-            {
-                return true;
-            }
+                if (el.gender==heightType)
+                {
+                    return true;
+                }
             });
         }
-        yesOrNo=prompt("Would you like to search by weight(y/n): ")
+        yesOrNo=prompt("Would you like to search by weight(y/n): ");
         if (yesOrNo == "y")
         {
             let weightType = prompt("enter weight in pounds: ");
             weightTrait = people.filter (function (el)
             {        
-                if (el.gender==genderType)
-            {
-                return true;
-            }
+                if (el.gender==weightType)
+                {
+                    return true;
+                }
             });
         }
+        yesOrNo=prompt("Would you like to search by eye color(y/n): ");
+        if (yesOrNo == "y")
+        {
+            let eyeType = prompt("enter weight in pounds: ");
+            eyeTrait = people.filter (function (el)
+            {        
+                if (el.gender==eyeType)
+                {
+                    return true;
+                }
+            });
+        }
+        yesOrNo=prompt("Would you like to search by ocupation(y/n): ");
+        if (yesOrNo == "y")
+        {
+            let occupationType = prompt("enter weight in pounds: ");
+            occupationTrait = people.filter (function (el)
+            {        
+                if (el.gender==occupationType)
+                {
+                    return true;
+                }
+            });
+        }
+        filteredTrait = people.filter(function (el)
+        {
+            if (el.gender==)
+
+        });
         
 
     }
@@ -322,7 +351,7 @@ function findPersonDescendants(person, people)
             }
             if (person.id == el.parents[0] || person.id == el.parents[1] && el.parents == el.id)
             {
-                descends += `Grandchild: ${el.firstName} ${el.lastName}`;
+                descends += ` Grandchild: ${el.firstName} ${el.lastName}`;
             }
 
             return descends;
