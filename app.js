@@ -122,6 +122,11 @@ function searchByName(people) {
 function searchByTraits(people)
 {
     let filteredTrait="";
+    let genderTrait="";
+    let heightTrait="";
+    let weightTrait="";
+    let eyeTrait="";
+    let occupationTrait="";
     let traitChoice = promptFor("Are you looking for 'one' trait or 'many''?", chars);
     if (traitChoice=="one")
     {
@@ -129,7 +134,7 @@ function searchByTraits(people)
         switch (trait) 
         {
             case "gender":
-                let genderType = prompt("enter 'male' or 'female: ");
+                genderType = promptFor("enter 'male' or 'female: ", chars);
                 filteredTrait = people.filter (function (el)
                 {        
                     if (el.gender==genderType)
@@ -140,7 +145,7 @@ function searchByTraits(people)
                 break;
 
             case "height":
-                let heightType = promptFor("Enter a height in inches: ", chars);
+                heightType = promptFor("Enter a height in inches: ", chars);
                 filteredTrait = people.filter (function (el)
                 {
                     if (el.height == heightType)
@@ -152,7 +157,7 @@ function searchByTraits(people)
                 break;
         
             case "weight":
-                let weightType = promptFor("Enter weight in pounds: ", chars);
+                weightType = promptFor("Enter weight in pounds: ", chars);
                 filteredTrait = people.filter (function (el)
                 {
                     if (el.weight == weightType)
@@ -191,10 +196,10 @@ function searchByTraits(people)
     else if (traitChoice=="many")
     {
 
-        let yesOrNo = prompt("Would you like to search by gender(y/n): ");
-        if (yesOrNo == "y")
+        let yesOrNo = promptFor("Would you like to search by gender(yes/no): ", yesNo).toLowerCase();
+        if (yesOrNo == "yes")
         {
-            let genderType = prompt("enter 'male' or 'female: ");
+            let genderType = promptFor("enter 'male' or 'female: ", chars);
             genderTrait = people.filter (function (el)
             {        
                 if (el.gender==genderType)
@@ -203,57 +208,80 @@ function searchByTraits(people)
                 }
             });
         }
-        yesOrNo = prompt("Would you like to search by height(y/n): ");
-        if (yesOrNo == "y")
+        else if (yesOrNo=="no")
         {
-            let heightType = prompt("enter height in inches: ");
+            genderTrait = people;
+        }
+        yesOrNo = promptFor("Would you like to search by height(yes/no): ", yesNo).toLowerCase();
+        if (yesOrNo == "yes")
+        {
+            let heightType = promptFor("enter height in inches: ", chars);
             heightTrait = people.filter (function (el)
             {        
-                if (el.gender==heightType)
+                if (el.height==heightType)
                 {
                     return true;
                 }
             });
         }
-        yesOrNo=prompt("Would you like to search by weight(y/n): ");
-        if (yesOrNo == "y")
+        else if (yesOrNo=="no")
         {
-            let weightType = prompt("enter weight in pounds: ");
+            return heightTrait=people;
+        }
+        yesOrNo=promptFor("Would you like to search by weight(yes/no): ", yesNo).toLowerCase();
+        if (yesOrNo == "yes")
+        {
+            let weightType = promptFor("enter weight in pounds: ", chars);
             weightTrait = people.filter (function (el)
             {        
-                if (el.gender==weightType)
+                if (el.weight==weightType)
                 {
                     return true;
                 }
             });
         }
-        yesOrNo=prompt("Would you like to search by eye color(y/n): ");
-        if (yesOrNo == "y")
+        else if (yesOrNo=="no")
         {
-            let eyeType = prompt("enter weight in pounds: ");
+            return weightTrait=people;
+        }
+        yesOrNo=promptFor("Would you like to search by eye color(yes/no): ",yesNo).toLowerCase();
+        if (yesOrNo == "yes")
+        {
+            let eyeType = promptFor("enter eye color: ", chars);
             eyeTrait = people.filter (function (el)
             {        
-                if (el.gender==eyeType)
+                if (el.eyeColor==eyeType)
                 {
                     return true;
                 }
             });
         }
-        yesOrNo=prompt("Would you like to search by ocupation(y/n): ");
-        if (yesOrNo == "y")
+        else if (yesOrNo=="no")
         {
-            let occupationType = prompt("enter weight in pounds: ");
+            return eyeTrait=people;
+        }
+        yesOrNo=promptFor("Would you like to search by ocupation(yes/no): ", yesNo).toLowerCase();
+        if (yesOrNo == "yes")
+        {
+            let occupationType = promptFor("enter occupation: ", chars);
             occupationTrait = people.filter (function (el)
             {        
-                if (el.gender==occupationType)
+                if (el.occupation==occupationType)
                 {
                     return true;
                 }
             });
+        }
+        else if (yesOrNo=="no")
+        {
+            return occupationTrait=people;
         }
         filteredTrait = people.filter(function (el)
         {
-            if (el.gender==)
+            if (el.gender.includes(genderType) && el.height.includes(heightType) && el.weight.includes(weightType) && el.eyeColor.includes(eyeType) && el.occupation.includes(occupationType))
+            {
+                return true;
+            }
 
         });
         
