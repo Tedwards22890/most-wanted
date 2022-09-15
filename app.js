@@ -111,7 +111,7 @@ function searchByName(people) {
 
     // The foundPerson value will be of type Array. Recall that .filter() ALWAYS returns an array.
     let foundPerson = people.filter(function (person) {
-        if (person.firstName === firstName && person.lastName === lastName) {
+        if (person.firstName === firstName && person.lastName === lastName) { //comparing names
             return true;
         }
     });
@@ -195,8 +195,47 @@ function searchByTraits(people)
     }
     else if (traitChoice=="many")
     {
+        let filteredTrait="";
+        function searchByUserDefinedProp(people)
+        {
+            let userInputProp=promptFor("Enter gender, weight, height, eyeColor, occupation: ",chars);
+            let userInputVal=promptFor("Enter value: ", chars);
+            let filteredTrait = people.filter(function (el)
+            {
+                try 
+                {
+                    if (el[userInputProp].includes(userInputVal))
+                    {
+                        return true;
+                    }
+                }
+                catch (error) 
+                {
+                    alert(error);
+                }
+                finally
+                {
+                    if (el[userInputProp] === parseInt(userInputVal))
+                    {
+                        return true;
+                    } 
 
-        let yesOrNo = promptFor("Would you like to search by gender(yes/no): ", yesNo).toLowerCase();
+                }
+
+            });
+            return filteredTrait;
+
+        }
+        filteredTrait = searchByUserDefinedProp(people).map(function (el)
+        {
+            return el;
+        });
+
+    }
+    return filteredTrait;
+}
+
+        /*let yesOrNo = promptFor("Would you like to search by gender(yes/no): ", yesNo).toLowerCase();
         if (yesOrNo == "yes")
         {
             let genderType = promptFor("enter 'male' or 'female: ", chars);
@@ -283,12 +322,10 @@ function searchByTraits(people)
                 return true;
             }
 
-        });
+        });*/
         
 
-    }
-    return filteredTrait;
-}
+
 
 
 
