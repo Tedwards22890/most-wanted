@@ -92,6 +92,10 @@ function mainMenu(person, people) {
         case "quit":
             // Stop application execution
             return;
+
+        case "test":
+            let results = searchByTraits(people);
+            console.log(results);
         default:
             // Prompt user again. Another instance of recursion
             return mainMenu(person, people);
@@ -119,9 +123,10 @@ function searchByName(people) {
 }
 // End of searchByName()
 
-function searchByTraits(people)
+
+/*function searchByTraits(people)
 {
-    let filteredTrait="";
+    let filteredTrait=[];
     let genderTrait="";
     let heightTrait="";
     let weightTrait="";
@@ -196,36 +201,7 @@ function searchByTraits(people)
     else if (traitChoice=="many")
     {
         let filteredTrait="";
-        function searchByUserDefinedProp(people)
-        {
-            let userInputProp=promptFor("Enter gender, weight, height, eyeColor, occupation: ",chars);
-            let userInputVal=promptFor("Enter value: ", chars);
-            let filteredTrait = people.filter(function (el)
-            {
-                try 
-                {
-                    if (el[userInputProp].includes(userInputVal))
-                    {
-                        return true;
-                    }
-                }
-                catch (error) 
-                {
-                    alert(error);
-                }
-                finally
-                {
-                    if (el[userInputProp] === parseInt(userInputVal))
-                    {
-                        return true;
-                    } 
-
-                }
-
-            });
-            return filteredTrait;
-
-        }
+        
         filteredTrait = searchByUserDefinedProp(people).map(function (el)
         {
             return el;
@@ -464,3 +440,39 @@ function chars(input) {
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 // 
+
+function searchByTraits(people=[])
+{
+    let userInputProp=promptFor("Enter gender, weight, height, eyeColor, occupation: ",chars);
+    let userInputVal=promptFor("Enter value: ", chars);
+    let filteredTrait = people.filter(function (el)
+    {
+        try 
+        {
+            if (el[userInputProp] === userInputVal)
+            {
+                return true;
+            }
+        }
+        catch (error) 
+        {
+            alert(error);
+        }
+        finally
+        {
+            if (el[userInputProp] === parseInt(userInputVal))
+            {
+                return true;
+            } 
+        }
+    });
+    let allResults = filteredTrait.map(function(el)
+    {
+        return `First name: ${el.firstName}\nLast name: ${el.lastName}\n`;
+    });
+    alert(allResults);
+
+    if (filteredTrait.length===1) return filteredTrait;
+    else if (filteredTrait.length===0) return searchByTraits(people);
+    return searchByTraits(filteredTrait);
+}
